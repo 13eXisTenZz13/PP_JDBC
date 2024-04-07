@@ -10,7 +10,6 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
     private static final Connection CONNECTION = Util.getConnection();
 
-
     public UserDaoJDBCImpl() {
 
     }
@@ -20,7 +19,8 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = CONNECTION.createStatement()) {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
+            ;
         }
     }
 
@@ -29,7 +29,8 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = CONNECTION.createStatement()) {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
+            ;
         }
     }
 
@@ -37,8 +38,8 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = "INSERT INTO USERS (NAME, LASTNAME, AGE) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = CONNECTION.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
-            preparedStatement.setString(2,lastName);
-            preparedStatement.setByte(3,age);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,7 +49,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         String sql = "DELETE FROM USERS WHERE ID=?";
         try (PreparedStatement preparedStatement = CONNECTION.prepareStatement(sql)) {
-            preparedStatement.setLong(1,id);
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
